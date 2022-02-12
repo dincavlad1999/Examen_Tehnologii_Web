@@ -1,0 +1,85 @@
+//TEST MOVIE ROUTES
+
+//	Operație POST pentru prima entitate - 0.3 ( In cadrul operatiei de POST are loc si filtrarea entitatii pe baza titlului si categoriei)
+// Import/Export JSON
+POST  http://localhost:4050/movie
+Content-Type: application/json
+
+{    
+    "titlu": "The Notebook",
+    "categorie": "romantic"
+}
+
+//Operație GET pentru prima entitate - 0.3 (get toate filmele din DB )
+###
+GET http://localhost:4050/movie
+
+
+//Operație GET pentru prima entitate - 0.3 ( pe baza id-ului transmis ca parametru in URL )
+###
+GET http://localhost:4050/movie/2
+
+// Operație DELETE pentru prima entitate - 0.3 ( pe baza id-ului transmis ca parametru in URL) 
+###
+DELETE  http://localhost:4050/movie/2
+
+//Operație PUT pentru prima entitate - 0.3 ( pe baza id-ului transmis ca parametru in URL )
+// Import/Export JSON
+###
+PATCH http://localhost:4050/movie/2
+Content-Type: application/json
+
+{    
+    "titlu": "O poveste intunecata",
+    "categorie": "AVENTURA"
+}
+
+// Sortare după un câmp pentru prima entitate - 0.3 ( pe baza datei publicarii DESCRESCATOR)
+###
+GET http://localhost:4050/movie/dataPublicarii/DESC
+
+// Sortare după un câmp pentru prima entitate  ( pe baza datei publicarii CRESCATOR)
+###
+GET http://localhost:4050/movie/dataPublicarii/ASC
+
+###
+//PAGINARE
+GET  http://localhost:4050/movie/pagination/1/2
+
+
+###
+//TEST CREW MEMBER ROUTES
+//Operație GET pentru a doua entitate ca subresursă - 0.3
+GET http://localhost:4050/crewMember
+
+
+//Operație POST pentru a doua entitate ca subresursă - 0.3
+###
+POST http://localhost:4050/crewMember
+Content-Type: application/json 
+
+{
+    "nume": "Miles Kenedy",
+    "rol": "WRITER",
+    "movieId": "1"
+}
+
+//Operație GET pentru a doua entitate ca subresursă - 0.3 ( pe baza id-ului crew memberului )
+###
+GET http://localhost:4050/crewMember/2
+
+
+###
+//o	Operație DELETE pentru a doua entitate ca subresursă - 0.3
+DELETE http://localhost:4050/crewMember/1
+
+//Operație PUT/PATCH pentru a doua entitate ca subresursă - 0.3
+###
+PATCH http://localhost:4050/crewMember/1
+Content-Type: application/json
+
+{    
+    "nume": "Clint Eastwood",
+    "rol": "WRITER"
+}
+
